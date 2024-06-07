@@ -71,3 +71,42 @@ print() 함수의 flush 매개변수는 출력 버퍼를 비우는 동작을 제
 
 
 
+
+
+
+
+
+
+
+
+완전 버퍼링 예제
+완전 버퍼링을 직접 제어하려면 파일을 열 때 버퍼 크기를 설정할 수 있습니다:
+
+with open('output.txt', 'w', buffering=1024) as f:
+    for i in range(5):
+        f.write(f"Line {i}\n")
+        time.sleep(1)
+
+이 예제에서 버퍼 크기를 1024바이트로 설정했습니다. 버퍼가 가득 차기 전에는 파일에 내용이 기록되지 않습니다.
+
+
+
+
+
+
+
+비버퍼링 예제
+표준 에러(stderr)는 기본적으로 비버퍼링입니다:
+
+import sys
+import time
+
+for i in range(5):
+    sys.stderr.write(f"Error Line {i}\n")
+    time.sleep(1)
+
+이 예제에서 sys.stderr.write는 즉시 출력되므로 각 줄이 바로 출력됩니다.
+
+
+
+프로세스가 종료될 대도 버퍼 다 비우고(방출하고, 출력하고) 종료하는 듯
