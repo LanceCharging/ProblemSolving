@@ -2,6 +2,7 @@ import time
 
 import os
 
+list_123 = ["aaaaaa", "bbb", "cccccc"]
 
 for i in range(3):
     # d = (i + 10).encode() ! 불가능 ! .encode는 정수형에서 불가능
@@ -16,8 +17,11 @@ for i in range(3):
 
     """
 
-    d = ("--" + "write" + str(i) + "--").encode()
-    print("--", i + 10, "--", end="\r", flush=True)
-    os.write(1, d)
+    print(i + 1, end="\r", flush=False)
 
     time.sleep(2)
+
+    d = (list_123[i]).encode()
+    os.write(1, d)
+
+    time.sleep(5)
